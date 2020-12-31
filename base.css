@@ -118,3 +118,7 @@ html {
   .items{
     margin: 50px;
   }
+
+  button{
+    margin: 10px;
+  }
