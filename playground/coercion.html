@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coercion</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <script>
+    const isCool = true;
+    if(!isCool){
+        console.log('You are not cool')
+    }
+    //if we use ! it will coerce a type to become a boolean
+    const name = 'Jennifer';
+    //so !name will return false
+    //name will return Jennifer, if we want a boolean we us !!name to return true
+
+    //Ternary - short hand if statement
+    const count = 2;
+  
+    // const word = count === 1 ? 'item' : 'items';
+
+    // const sentence = `You have ${count} ${word} in your cart`;
+    // console.log(sentence);
+
+    //you can also write the ternery inside the sentence
+    const sentence = `You have ${count} item${count === 1 ? '' : 's'} in your cart`;
+    console.log(sentence)
+
+    //the AND AND trick
+    // function check1(){
+    //     console.log('Running check 1');
+    //     return true;
+    // }
+    // function check2(){
+    //     console.log('Running check 2');
+    //     return true;
+    // }
+    // function check3(){
+    //     console.log('Running check 3');
+    //     return true;
+    // }
+    // if(check1() && check2() && check3()){
+    //     console.log('All checks passed')
+    // } else {
+    //     console.log('Some checks failed')
+    // }
+    function showAdminBar(){
+        console.log('Showing admin bar');
+    }
+    const isAdmin = true;
+    //here is the trick
+    isAdmin && showAdminBar();
+    
+    //you can write an if statement on one line without the code block and it will work
+    //however, it will not work if the if statement is on multiple lines
+    if(isAdmin) showAdminBar();
+
+    </script>
+  </body>
+</html>
