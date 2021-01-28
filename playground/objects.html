@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+    <link rel="stylesheet" href="../base.css"
+</head>
+<body>
+    <input type="text" name="first" value="wes">
+    <script>
+        const age = 100;
+        const person = {
+            name: 'Wes',
+            age,
+            'cool-dude': true,
+            'really cool': false,
+            '777': true,
+            dog: 'snickers',
+            clothing: {
+                shirt: 10,
+                pants: 2,
+            },
+            sayHello: function(greeting = 'Hey'){
+                return `${greeting} ${this.name}`;
+            }
+        }
+        person.job = 'Web Developer';
+        person.age = 44;
+
+        // const personFroze = Object.freeze(person)
+
+        //these are two different ways to access a property in an object
+        // console.log(person.age);
+        //you will use below to check a property see below
+        // console.log(person['age']);
+        // const propertyToCheck = prompt('What do you want to check?');
+        // console.log(person[propertyToCheck])
+
+        const nameInput = document.querySelector('[name="first"]');
+        console.log(nameInput.value);
+
+        //to delete from an object, use delete
+        console.log(delete person.job);
+
+    </script>
+</body>
+</html>
