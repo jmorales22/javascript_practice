@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maps</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <h1 style="color: white">Here is a list of prizes you can win!!</h1>
+  <ul class="prizes" style="color: white"></ul>
+    <script>
+        const person1 = {
+            name: 'wes',
+            age: 200,
+        }
+
+        const myMap = new Map();
+        //we have the set() api
+        myMap.set('name', 'wes');
+        myMap.set(100, 'This is a number');
+        myMap.set(person1, 'Really cool!');
+
+        // console.log(myMap.get(person1));
+        const score = 100;
+        const prizes = new Map();
+
+        prizes.set(100, 'Bear');
+        prizes.set(200, 'Duck');
+        prizes.set(300, 'Car');
+
+        // console.log(`you win a ${prizes.get(score)}`);
+
+        //myMap.size will tell you the size of the map
+
+        const ul = document.querySelector('.prizes');
+       for(const [points, prize] of prizes){
+           const li = `<li>${points} - ${prize}</li>`
+           ul.insertAdjacentHTML('beforeend', li);
+       }
+
+        //we have the has() api
+
+        //and the delete() api
+
+    </script>
+  </body>
+</html>

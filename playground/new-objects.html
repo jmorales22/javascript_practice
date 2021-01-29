@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Objects</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+
+    <script src="https://unpkg.com/lodash"></script>
+    <script>
+      let name1 = 'wes';
+      let name2 = 'wes';
+
+      //console.log(name1 === name2);
+
+      // const person1 = {
+      //     first: 'wes',
+      //     last: 'bos',
+      // };
+
+      //However, the spread operator only makes a shallow copy if we changed person1 to this:
+      const person1 = {
+        first: 'wes',
+        last: 'bos',
+        clothing: {
+          shirts: 10,
+          pants: 5,
+        },
+      };
+
+      //if we update person3.clothing.shirts = 100, it will also update person one because
+      //it only goes one layer deep when it makes the copy
+      //we can use Lodash to help us with this
+
+      const person2 = {
+        first: 'wes',
+        last: 'bos',
+      };
+      //On line 28, it looks like person3 is a copy of person1 but it isn't. It is pointing to the original
+      //variable. So, any changes you make to person3 will also be made to person1.
+      //This happens with arrays, maps, and sets also. In order to make a copy, you have to use the spread operator
+      // const person3 = person1;
+      // person3.first = 'Larry';
+      // console.log(person3.first);
+      // console.log(person1.first);
+
+      //making a copy of an object
+    //   const person3 = { ...person1 };
+    //   person3.first = 'Larry';
+
+    //now we can use Lodash to make a copy of the object. We installed the library on
+    //line 11
+
+        const person3 = _.cloneDeep(person1);
+        //this allows us to change the number of shirts in person3 without changing person1
+        person3.clothing.shirts = 100;
+
+      //before the spread, you would use this
+      // const person4 = Object.assign({}, person1);
+
+      const meatInventory = {
+          bacon: 2,
+          sausage: 3,
+      }
+
+      const veggieInventory = {
+          lettuce: 5,
+          tomato: 3,
+      }
+      //lets say we want to merge these two objects together, we can do this:
+      const inventory = { ...meatInventory, ... veggieInventory};
+
+      function doStuff(data){
+          data = 'something else';
+          console.log(data);
+      }
+
+      doStuff(name1)
+      console.log('name1', name1)
+      
+    </script>
+  </body>
+</html>
