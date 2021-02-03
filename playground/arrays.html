@@ -14,11 +14,78 @@
       //  console.log(names.length);
       //  console.log(names[names.length - 1]);
 
-      //Mutation method
-      const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      //this will change the original array
+      names.push('lux');
+      //if you don't want to change the original array you can do this
+      const names2 = [...names, 'lux'];
 
-      const numbersBackwards = numbers.reverse();
-      
+      names.unshift('poppy');
+      //or
+      const names3 = ['poppy', ...names];
+
+      //slice is immutable and splice is mutable
+    //   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    //   console.log(numbers);
+    //     numbers.splice(3,2);
+    //   console.log(numbers);
+
+    // adding items to the middle of an array
+    const bikes = ['bianchi', 'miele', 'panasonic', 'miyata'];
+    const newBikes = [
+        ...bikes.slice(0,2),
+        'benotto',
+        ...bikes.slice(2)
+    ];
+
+    // remove an item from an array
+
+    const newBikes2 = [
+        ...newBikes.slice(0,3),
+        ...newBikes.slice(4)
+    ];
+
+    // console.log(newBikes2);
+
+    const comments = [
+        {text: 'Cool Beans', id: 123},
+        {text: 'Love This!', id: 124},
+        {text: 'Neato', id: 125},
+        {text: 'Good Bikes', id: 126},
+        {text: 'Awesome', id: 127},
+    ];
+
+        function deleteComment(id, comments){
+            //first find the index of the item in the array
+            const commentIndex = comments.findIndex(comment =>
+            comment.id === id)
+            //make a new array without that item in it
+            return [
+                ...comments.slice(0, commentIndex),
+                ...comments.slice(commentIndex + 1)
+            ]
+            //return a new array
+        }
+
+        const kaitIndex = names.findIndex(name => name === 'kait');
+        const newNamesWithoutKait = [
+            // get everything up to kaitIndex
+            ...names.slice(0, kaitIndex),
+            //everything after kaitIndex
+            ...names.slice(kaitIndex + 1)
+        ];
+        console.log(newNamesWithoutKait)
+
+      //Mutation method - do change the original data
+      //   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+      //   const numbersBackwards = numbers.reverse();
+
+      //   // anytime you want to use a mutation method and NOT mutate the original array
+      //   // you will need to take a copy of the array
+      //   const numbersReversed = [...numbers].reverse();
+
+      //   //Immutable methods - do not change the original data
+      //   const pizzaSlice = numbers.slice(2,4);
     </script>
   </body>
 </html>
