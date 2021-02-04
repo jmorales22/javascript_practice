@@ -103,24 +103,51 @@
     */
 
     // Display all bun types with " or " - use join()
+    console.log(buns.join(' or '));
 
-    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into a string
+    // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into an array
+    const foodString = "hot dogs,hamburgers,sausages,corn ";
+    console.log(foodString.split(','));
+    // will return ["hot dogs", "hamburgers", "sausages", "corn "]
 
     // take the last item off toppings with pop()
+    toppings.pop() // will return last item in array and will remove it
     // add it back with push()
+    toppings.push('Cheese'); 
     // take the first item off toppings with shift()
+    toppings.shift();
     // add it back in with unshift()
-    // Do the last four,but immutable (with spreads and new variables)
+    toppings.unshift('Mushrooms');
+    // Do the last four,but immutable (with spreads and new variables);
+    let newToppings = toppings.slice(0, toppings.length - 1);
+
+    newToppings = [...newToppings, toppings[toppings.length - 1]];
+
+    let newToppings2 = toppings.slice(1, toppings.length);
+    newToppings2 = [toppings[0], ...newToppings2];
+    console.log(newToppings2)
 
 
     // Make a copy of the toppings array with slice()
+    const toppingsCopy = toppings.slice(0);
+    
     // Make a copy of the toppings array with a spread
+    const toppingCopy2 = [...toppings];
     // take out items 3 to 5 of your new toppings array with splice()
+    toppingsCopy.splice(3,5);
     // find the index of Avocado with indexOf() / lastIndexOf()
+    const avoIndex = toppings.indexOf('Avocado');
     // Check if hot sauce is in the toppings with includes()
+    const isInToppings = toppings.includes('Hot Sauce');
     // add it if it's not
+    if(!isInToppings){
+        toppings.push('Hot Sauce');
+    }
     // flip those toppings around with reverse()
-
+    // mutable
+    toppings.reverse();
+    // immutable
+    const toppingsReversed = toppings.reverse();
     /*
       Callback Methods
     */
