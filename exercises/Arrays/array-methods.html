@@ -74,40 +74,40 @@
     // console.log(Object.keys(meats));
     // console.log(Object.values(meats));
 
-    Object.values(meats).forEach(qty => {
-        console.log(qty);
-    });
+    // Object.values(meats).forEach(qty => {
+    //     console.log(qty);
+    // });
 
-    Object.keys(meats).forEach(meat => {
-        console.log(meat);
-    });
+    // Object.keys(meats).forEach(meat => {
+    //     console.log(meat);
+    // });
 
-    Object.entries(meats).forEach(entry => {
-        console.log(entry);
-    });
+    // Object.entries(meats).forEach(entry => {
+    //     console.log(entry);
+    // });
 
-    // Another way to do this
-    Object.entries(meats).forEach(entry => {
-        // const key = entry[0];
-        // const value = entry[1];
-        // or you can use destructuring
-        [key, value] = entry;
-        console.log(key, value);
-    });
-    // or you can destructure the key and value directly
-    Object.entries(meats).forEach(([key, value]) => {
-        console.log(key, value);
-    });
+    // // Another way to do this
+    // Object.entries(meats).forEach(entry => {
+    //     // const key = entry[0];
+    //     // const value = entry[1];
+    //     // or you can use destructuring
+    //     [key, value] = entry;
+    //     console.log(key, value);
+    // });
+    // // or you can destructure the key and value directly
+    // Object.entries(meats).forEach(([key, value]) => {
+    //     console.log(key, value);
+    // });
     /*
       Instance Methods
     */
 
     // Display all bun types with " or " - use join()
-    console.log(buns.join(' or '));
+    // console.log(buns.join(' or '));
 
     // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into an array
     const foodString = "hot dogs,hamburgers,sausages,corn ";
-    console.log(foodString.split(','));
+    // console.log(foodString.split(','));
     // will return ["hot dogs", "hamburgers", "sausages", "corn "]
 
     // take the last item off toppings with pop()
@@ -125,7 +125,7 @@
 
     let newToppings2 = toppings.slice(1, toppings.length);
     newToppings2 = [toppings[0], ...newToppings2];
-    console.log(newToppings2)
+    // console.log(newToppings2)
 
 
     // Make a copy of the toppings array with slice()
@@ -153,16 +153,54 @@
     */
 
     // find the first rating that talks about a burger with find()
+    function findBurgRating(singleFeedback) {
+       return singleFeedback.comment.includes('burg')
+    };
+
+    function findByWord(word){
+        return function(singleFeedback){
+            return singleFeedback.comment.includes('word');
+        }
+    }
+
+    // const burgRating = feedback.find(findBurgRating);
+    // const burgRating = feedback.find(findByWord('burg'));
+    const smoothieRating = feedback.find(findByWord('Smootie'));
+    // console.log(burgRating)
+
     // find all ratings that are above 2 with filter()
+    function filterByMinRating(minRating){
+        return function(singleFeedback){
+            return singleFeedback.rating > minRating;
+        }
+    }
+    const goodReviews = feedback.filter(filterByMinRating(4));
+    console.table(goodReviews)
     // find all ratings that talk about a burger with filter()
+    const burgRatings = feedback.filter(singleFeedback => singleFeedback.comment.includes('burg'));
+    console.log(burgRatings)
     // Remove the one star rating however you like!
+    const legitRatings = feedback.filter(single => single.rating !== 1);
+    console.table(legitRatings)
 
     // check if there is at least 5 of one type of meat with some()
+    const isThereEnoughOfAtLeastOneMeat = Object.values(meats).some(meatValue => meatValue >= 5)
     // make sure we have at least 3 of every meat with every()
+    const isThereEnoughOfEveryMeat = Object.values(meats).every(meatValue => meatValue >= 3)
+    
     // sort the toppings alphabetically with sort()
+    console.log(toppings.sort())
     // sort the order totals from most expensive to least with .sort()
+    function numberSort(a,b){
+        return a - b;
+    }
     // Sort the prices with sort()
-
+    const productsSortedByPrice = Object.entries(prices).sort(function(a,b){
+        const aPrice = a[1];
+        const bPrice = b[1];
+        return aPrice - bPrice;
+    });
+    console.table(productsSortedByPrice)
     /*
       Looping Methods (next)
     */
