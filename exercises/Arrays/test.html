@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="inputBox" type="text" name="firstName" placeholder="Enter first name" >
+    <button class="myButton" type="submit">Submit Name</button>
+    <p id="displayName"></p>
+    <script>
+        const button = document.querySelector(".myButton");
+        const handleClick = () => {
+            let name = document.getElementById('inputBox').value;
+            document.getElementById("displayName").innerHTML = name;
+        }
+
+        button.addEventListener("click", handleClick);
+    </script>
+</body>
+</html>

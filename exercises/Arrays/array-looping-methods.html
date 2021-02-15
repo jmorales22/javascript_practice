@@ -162,39 +162,39 @@
       // Map, Filter, and Reduce
       console.clear();
       function addArms(face) {
-          return `👋 ${face} 👋`
+        return `👋 ${face} 👋`;
       }
 
       const toys = faces.map(addArms);
-    //   console.log(toys);
+      //   console.log(toys);
 
-      function bosify(name){
-          return `${name} Bos`;
+      function bosify(name) {
+        return `${name} Bos`;
       }
-      function capitalize(word){
-          return `${word[0].toUpperCase()}${word.slice(1)}`;
+      function capitalize(word) {
+        return `${word[0].toUpperCase()}${word.slice(1)}`;
       }
-      const fullNames = ['wes', 'kait', 'poppy'].map(capitalize).map(bosify)
-    //   console.log(fullNames)
+      const fullNames = ['wes', 'kait', 'poppy'].map(capitalize).map(bosify);
+      //   console.log(fullNames)
 
-    const orderTotalsWithTax = orderTotals.map(total => total * 1.13);
-    // console.log(orderTotalsWithTax);
+      const orderTotalsWithTax = orderTotals.map((total) => total * 1.13);
+      // console.log(orderTotalsWithTax);
 
-    // function attachBody(face, body){
-    //     return `
-    //          ${face}
-    //        ${body.repeat(3)}
-    //       ${Array(3).fill(body).join(' ')}
-    //     👇  ${body.repeat(2)}  👇
-    //        ${Array(2).fill(body).join('  ')}
-    //        ${Array(2).fill(body).join('  ')}
-    //        👢   👢
-    //        `
-    // }
+      // function attachBody(face, body){
+      //     return `
+      //          ${face}
+      //        ${body.repeat(3)}
+      //       ${Array(3).fill(body).join(' ')}
+      //     👇  ${body.repeat(2)}  👇
+      //        ${Array(2).fill(body).join('  ')}
+      //        ${Array(2).fill(body).join('  ')}
+      //        👢   👢
+      //        `
+      // }
 
-    // faces.map(face => attachBody(face, '🍟')).forEach(body => console.log(body));
+      // faces.map(face => attachBody(face, '🍟')).forEach(body => console.log(body));
 
-    const cleanPeople = people.map(function(person){
+      const cleanPeople = people.map(function (person) {
         // get their birthday
         // birthday timestamp
         const birthday = new Date(person.birthday).getTime();
@@ -202,16 +202,37 @@
         // current timestamp
         const now = Date.now();
         const age = Math.floor((now - birthday) / 31536000000);
-        console.log(age)
+        // console.log(age)
 
         // return their full name and bday in an object
-        return{
-            age,
-            name: `${person.names.first} ${person.names.last}`,
-        }
-    })
+        return {
+          age,
+          name: `${person.names.first} ${person.names.last}`,
+        };
+      });
 
-    console.table(cleanPeople)
+      // console.table(cleanPeople)
+
+      const over40 = cleanPeople.filter((people) => people.age > 40);
+
+      //this is a higher order function
+      function findById(id) {
+        return function isStudent(student) {
+          return student.id === id;
+        }
+      }
+      function findByProp(prop, propWeAreLookingFor){
+        return function isStudent(student){
+          return student[prop] === propWeAreLookingFor;
+        }
+      }
+
+      // const student = students.find(stud => stud.id === '565a');
+      // const student = students.find(isStudent);
+      // const student = students.find(findById('565a'));
+      const student = students.find(findByProp('id', '565a'));
+      const student2 = students.find(findByProp('first_name', 'Micki'));
+      // console.log(student2);
 
 
     </script>
