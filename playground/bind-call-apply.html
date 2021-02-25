@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bind-Call-Apply</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <p>Hey</p>
+    <button>Click Me</button>
+    <div class="wrapper">
+      <p>Inside the wrapper</p>
+    </div>
+    <script>
+      const person = {
+        name: 'Wes Bos',
+        sayHi() {
+          console.log(`Hey ${this.name}!`);
+        },
+      };
+
+      const jennifer = { name: 'Jennifer' };
+
+      const sayHi = person.sayHi.bind(jennifer);
+
+      //query selector example
+      // by calling bind agains the querySelector, we say when the $ function
+      // is run, use 'document' as the 'this' value
+      const $ = document.querySelector.bind(document);
+      const lookFor = document.querySelectorAll.bind(document);
+
+      const wrapper = document.querySelector('.wrapper');
+      const p = wrapper.querySelector('p');
+      console.log(p);
+      console.log($('p'));
+      console.log(lookFor('p'));
+
+      const bill = {
+        total: 1000,
+        calculate: function (taxRate) {
+          return this.total + this.total * taxRate;
+        },
+      };
+
+      const total = bill.calculate(0.12);
+      const calc = bill.calculate.bind({ total: 500 }, 0.07);
+
+      const total2 = bill.calculate.call({ total: 500 }, 0.07);
+
+      const total3 = bill.calculate.apply({ total: 325 }, [0.1]);
+    </script>
+  </body>
+</html>
