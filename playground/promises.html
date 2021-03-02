@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promises</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <script>
+      function makePizza(toppings) {
+        return new Promise(function (resolve, reject) {
+          // wait 1 second for the pizza to cook:
+          setTimeout(function () {
+            // when you are ready, you can resolve this promise
+            resolve(
+              `Here is your pizza 🍕 with the toppings of ${toppings.join(
+                ' '
+              )}`
+            );
+          }, 1000);
+          // if something went wrong, we can reject this promis;
+        });
+      }
+
+      const pepperoniPromise = makePizza(['pepperoni', 'cheese']);
+      const canadianPromise = makePizza(['pepperoni', 'mushrooms', 'onions']);
+
+      console.log(pepperoniPromise)
+      pepperoniPromise.then(function (pizza) {
+        console.log('Ahh got it!');
+        console.log(pizza);
+      });
+    </script>
+  </body>
+</html>
